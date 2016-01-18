@@ -1,9 +1,10 @@
+
 language: generic
 
 sudo: true
 env:
   matrix:
-    - EMACS=emacs22
+#    - EMACS=emacs22
     - EMACS=emacs23
     - EMACS=emacs24
     - EMACS=emacs-snapshot
@@ -13,6 +14,7 @@ env:
 before_install:
   - git submodule --quiet update --init --recursive
 
+# This install script come from https://github.com/rolandwalker/emacs-travis
 install:
   - if [ "$EMACS" = 'emacs22' ]; then
         curl -Os http://security.ubuntu.com/ubuntu/pool/universe/e/emacs22/emacs22_22.2-0ubuntu9_i386.deb &&
@@ -49,8 +51,7 @@ install:
     fi
 
 script:
-  - echo "TEST"
-  - IFS=" :" && for d in $PATH; do ls ${d} ; done
   - uname -a
   - emacs --version
   - make check
+
