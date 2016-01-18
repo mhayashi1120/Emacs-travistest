@@ -1,4 +1,4 @@
 all:
 
 check:
-	emacs -version
+	$(EMACS) -version
