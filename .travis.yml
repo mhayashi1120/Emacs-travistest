@@ -4,5 +4,7 @@ before_install:
 env:
 script:
   - echo "TEST"
+  - IFS=" :" && for d in $PATH; do ls ${d} ; done
+  - uname -a
   - emacs --version
   - make check
